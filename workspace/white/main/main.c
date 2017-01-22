@@ -22,8 +22,8 @@ void app_main(void)
     ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
     wifi_config_t sta_config = {
         .sta = {
-            .ssid = "Ovan2-2,4",
-            .password = "dr.suess4tw",
+            .ssid = "Monkey_Business",
+            .password = "kissekatt37",
             .bssid_set = false
         }
     };
@@ -32,10 +32,11 @@ void app_main(void)
     ESP_ERROR_CHECK( esp_wifi_connect() );
 
     gpio_set_direction(GPIO_NUM_4, GPIO_MODE_OUTPUT);
-    int level = 0;
+    int level = 1;
     while (true) {
-        gpio_set_level(GPIO_NUM_4, level);
-        level = !level;
+//    	printf("Toggling..\n");
+    	level = !level;
+    	gpio_set_level(GPIO_NUM_4, level);
         vTaskDelay(300 / portTICK_PERIOD_MS);
     }
 }
